@@ -11,16 +11,28 @@
 	border-radius: 20px;
 }
 
+p {
+	text-align: center;
+}
+
 #display {
-	width: 100%;
+	position: relative;
 	height: 40px;
 	background: #E7F6CF;
 	background: linear-gradient(#E7F6CF, #D6E5C0);
 	background: -o-linear-gradient(#E7F6CF, #D6E5C0);
 	background: -moz-linear-gradient(#E7F6CF, #D6E5C0);
 	background: -webkit-linear-gradient(#E7F6CF, #D6E5C0);
+	border: 1px solid black;
 	border-radius: 5px;
-	margin-bottom: 20px;
+	margin: 0 6px 20px 6px;
+}
+
+#output {
+	position: absolute;
+	right: 5px;
+	font-size: 30px;
+	line-height: 40px;
 }
 
 #buttons {
