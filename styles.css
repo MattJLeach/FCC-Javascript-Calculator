@@ -1,0 +1,24 @@
+#calculator {
+	width: 300px;
+	margin: 10% auto;
+	padding: 10px;
+	background: #DBDBDB;
+	background: linear-gradient(#DBDBDB, #9F9F9F);
+	background: -o-linear-gradient(#DBDBDB, #9F9F9F);
+	background: -moz-linear-gradient(#DBDBDB, #9F9F9F);
+	background: -webkit-linear-gradient(#DBDBDB, #9F9F9F);
+	text-align: center;
+	border: 5px solid #AEAEAE;
+	border-radius: 20px;
+}
+
+#display {
+	width: 100%;
+	height: 40px;
+	background: #E7F6CF;
+	background: linear-gradient(#E7F6CF, #D6E5C0);
+	background: -o-linear-gradient(#E7F6CF, #D6E5C0);
+	background: -moz-linear-gradient(#E7F6CF, #D6E5C0);
+	background: -webkit-linear-gradient(#E7F6CF, #D6E5C0);
+	border-radius: 5px;
+}
