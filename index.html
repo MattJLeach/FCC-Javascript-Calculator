@@ -11,27 +11,26 @@
 			<span id="output">0</span>
 		</div>
 		<div id="buttons">
-			<button value="clr" class="btn-wide">Clr</button>
-			<button value="/">&divide;</button>
-			<button value="*">X</button>
-			<button value="7">7</button>
-			<button value="8">8</button>
-			<button value="9">9</button>
-			<button value="-">-</button>
-			<button value="4">4</button>
-			<button value="5">5</button>
-			<button value="6">6</button>
-			<button value="+">+</button>
-			<button value="1">1</button>
-			<button value="2">2</button>
-			<button value="3">3</button>
-			<button value="0" class="btn-wide">0</button>
-			<button value=".">.</button>
-			<button value="=" class="btn-tall">=</button>
+			<button onclick="clr(value)" value="clr" class="btn-wide">Clr</button>
+			<button onclick="operator(value)" value="/">&divide;</button>
+			<button onclick="operator(value)" value="*">X</button>
+			<button onclick="number(value)" value="7">7</button>
+			<button onclick="number(value)" value="8">8</button>
+			<button onclick="number(value)" value="9">9</button>
+			<button onclick="operator(value)" value="-">-</button>
+			<button onclick="number(value)" value="4">4</button>
+			<button onclick="number(value)" value="5">5</button>
+			<button onclick="number(value)" value="6">6</button>
+			<button onclick="operator(value)" value="+">+</button>
+			<button onclick="number(value)" value="1">1</button>
+			<button onclick="number(value)" value="2">2</button>
+			<button onclick="number(value)" value="3">3</button>
+			<button onclick="number(value)" value="0" class="btn-wide">0</button>
+			<button onclick="decimal(value)" value=".">.</button>
+			<button onclick="equals(value)" value="=" class="btn-tall">=</button>
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>

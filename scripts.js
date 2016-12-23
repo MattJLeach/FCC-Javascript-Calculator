@@ -1,59 +1,47 @@
-$(function() {
+var total = 0;
+var lastEntered = '';
+var sum = '';
+var currentValue = '0';
+var display = document.getElementById('output');
+var decimalUsed = false;
 
-	// declare all variables
-	var result = 0;
-	var entry = '';
-	var decimal = false;
-	var type = '';
-	var numbers = [0,1,2,3,4,5,6,7,8,9];
-	var operators = ['/','*','-','+'];
+function clr() {
+	// Reset all variables and update display
+	total = 0;
+	lastEntered = '';
+	sum = '';
+	currentValue = 0;
+	updateDisplay('currentValue');
+}
 
-	// Function to update the display
-	function updateOutput(value) {
-		if(value == 'entry') {
-			$('#output').text(entry);
-		} else if (value == 'result') {
-			$('#output').text(result);
-		}
+function number(v) {
+	if (currentValue == 0) {
+		currentValue = v;
+	} else {
+		currentValue += v;	
 	}
+	
+	updateDisplay('currentValue');
+}
 
-	// Function to determine the type of entry
-	function determineType(value) {
-		for(var i = 0; i < numbers.length; i++) {
-			if(value == numbers[i]) {
-				type = 'number';
-			}
-		}
+function operator(v) {
+	console.log(v);
+}
 
-		for(var i = 0; i < operators.length; i++) {
-			if(value == operators[i]) {
-				type = 'operator';
-			}
-		}
-
-		if(value == 'clr') {
-			type = 'clear';
-		}
-
-		if(value == '.') {
-			type = 'decimal';
-		}
-
-		if(value == '=') {
-			type = 'equals';
-		}
+function decimal() {
+	if (!decimalUsed) {
+		currentValue += '.';
+		decimalUsed = true;
+		updateDisplay('currentValue');
 	}
+}
 
-	$('button').click(function() {
-		entry = $(this).attr('value');
-		determineType(entry);
-		
+function equals() {
+	console.log('equals');
+}
 
-
-
-
-		console.log(type);
-		updateOutput('entry');
-	});
-
-});
+function updateDisplay(t){
+	if (t === 'currentValue') {
+		display.innerHTML = currentValue;
+	}
+}
