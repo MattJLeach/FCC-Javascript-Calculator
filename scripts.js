@@ -1,17 +1,15 @@
-var total = 0;
+var display = document.getElementById('output');
 var lastEntered = '';
 var sum = '';
 var currentValue = '0';
-var display = document.getElementById('output');
 var decimalUsed = false;
 
+// Reset all variables and update display
 function clr() {
-	// Reset all variables and update display
-	total = 0;
 	lastEntered = '';
 	sum = '';
 	currentValue = 0;
-	updateDisplay('currentValue');
+	updateDisplay('current');
 }
 
 function number(v) {
@@ -21,7 +19,7 @@ function number(v) {
 		currentValue += v;	
 	}
 	
-	updateDisplay('currentValue');
+	updateDisplay('current');
 }
 
 function operator(v) {
@@ -37,11 +35,14 @@ function decimal() {
 }
 
 function equals() {
-	console.log('equals');
+	console.log(eval('test'));
 }
 
 function updateDisplay(t){
-	if (t === 'currentValue') {
+	if (t === 'current') {
 		display.innerHTML = currentValue;
+	}
+	if (t === 'sum') {
+		display.innerHTML = eval(sum);
 	}
 }
