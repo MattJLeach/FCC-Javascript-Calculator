@@ -1,48 +1,64 @@
 var display = document.getElementById('output');
-var lastEntered = '';
+var operators = ['+', '-', '*', '/'];
+var last = '';
 var sum = '';
-var currentValue = '0';
-var decimalUsed = false;
+var current = '';
+var decimal = false;
 
 // Reset all variables and update display
 function clr() {
-	lastEntered = '';
+	last = '';
 	sum = '';
-	currentValue = 0;
-	updateDisplay('current');
+	current = '';
+	decimal = false;
+	display.innerHTML = '0';
 }
 
 function number(v) {
-	if (currentValue == 0) {
-		currentValue = v;
+	if (current.length === 0) {
+		current = v;
 	} else {
-		currentValue += v;	
+		current += v;	
 	}
-	
-	updateDisplay('current');
+	last = v;
+	display.innerHTML = current;
 }
 
 function operator(v) {
-	console.log(v);
+	if (lastOperator()) {
+		console.log('here');
+	}
+	if (current.length === 0 && v === '-') {
+		current = v;
+		display.innerHTML = current;
+	}
+	last = v;
 }
 
-function decimal() {
-	if (!decimalUsed) {
-		currentValue += '.';
-		decimalUsed = true;
-		updateDisplay('currentValue');
+function decimalPoint() {
+	if (!decimal) {
+		current += '.';
+		decimal = true;
+		display.innerHTML = current;
 	}
 }
 
 function equals() {
-	console.log(eval('test'));
+	if (current.length > 0) {
+		sum += current;
+	}
+	last = '=';
+	display.innerHTML = eval(sum);
+	sum = eval(sum);
 }
 
-function updateDisplay(t){
-	if (t === 'current') {
-		display.innerHTML = currentValue;
+function lastOperator() {
+	for (var i = 0; i < operators.length; i++) {
+		if (operators[i] == last) {
+			console.log('Last entry was an operator');
+			return true;
+		}
 	}
-	if (t === 'sum') {
-		display.innerHTML = eval(sum);
-	}
+	console.log('Last entry was not an operator');
+	return false;
 }
