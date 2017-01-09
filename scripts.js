@@ -37,13 +37,16 @@ function operator(v) {
 			if (v === '-') {
 				current = v;
 				display.innerHTML = current;
+				last = 'number';
 			} else {
 				alert('You must enter a number first');
 			}
 			break;
 		case 'number':
 			sum += current;
+			sum = eval(sum);
 			current = v;
+			decimal = false;
 			display.innerHTML = eval(sum);
 			break;
 		case 'operator':
@@ -56,8 +59,17 @@ function operator(v) {
 
 function decimalPoint() {
 	if (!decimal) {
-		current += '.';
-		decimal = true;
+		switch (last) {
+			case '':
+				current = '0.';
+				break;
+			case 'number':
+				current += '.';
+				break;
+			case 'operator':
+				current = '0.';
+				break;
+		}
 		display.innerHTML = current;
 	}
 }
@@ -66,28 +78,7 @@ function equals() {
 	if (current.length > 0) {
 		sum += current;
 	}
-	last = '=';
+	last = 'operator';
 	display.innerHTML = eval(sum);
 	sum = eval(sum);
 }
-
-document.addEventListener('keypress', function(event) {
-	var key = event.keyCode;
-	console.log(key);
-	if (key === 13) {
-		equals();
-	}
-
-	if (key === 42 || key === 43 || key === 45 || key === 47) {
-		operator(String.fromCharCode(key));
-	}
-
-	if (key == 8 || key == 46) {
-		clr();
-	}
-
-	if (key >= 48 && key <= 57) {
-		number(String.fromCharCode(key));
-	}
-
-});
