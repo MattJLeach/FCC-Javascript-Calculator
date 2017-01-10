@@ -75,10 +75,10 @@ function decimalPoint() {
 }
 
 function equals() {
-	if (current.length > 0) {
+	if (current.length > 0 && last != 'operator') {
 		sum += current;
+		last = 'operator';
+		display.innerHTML = eval(sum);
+		sum = eval(sum);
 	}
-	last = 'operator';
-	display.innerHTML = eval(sum);
-	sum = eval(sum);
 }
