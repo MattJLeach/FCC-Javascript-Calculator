@@ -26,6 +26,10 @@ function number(v) {
 			sum += current;
 			current = v;
 			break;
+		case 'equals':
+			clr();
+			current = v;
+			break;
 	}
 	display.innerHTML = current;
 	last = 'number';
@@ -52,6 +56,10 @@ function operator(v) {
 		case 'operator':
 			current = v;
 			break;
+		case 'equals':
+			current = v;
+			decimal = false;
+			break;
 	}
 		
 	last = 'operator';
@@ -69,15 +77,18 @@ function decimalPoint() {
 			case 'operator':
 				current = '0.';
 				break;
+			case 'equals':
+				current = '0.';
+				break;
 		}
 		display.innerHTML = current;
 	}
 }
 
 function equals() {
-	if (current.length > 0 && last != 'operator') {
+	if (current.length > 0 && last != 'operator' && last != 'equals') {
 		sum += current;
-		last = 'operator';
+		last = 'equals';
 		display.innerHTML = eval(sum);
 		sum = eval(sum);
 	}
